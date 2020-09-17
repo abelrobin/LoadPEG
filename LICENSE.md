@@ -32,7 +32,7 @@ Licensee acknowledges that the Licensed Work is protected by copyright and other
 
 5. PUBLICATION 
 
-All publications that are based on or utilize the Licensed work shall be cited appropriately using the DOI provided in the GitHub repository, and include the following notice: LoadPEG.m was created by Dr. James Harynuk and Robin Abel and used here under license from the University of Alberta; based on the original work available from https://github.com/abelrobin/LoadPEG.
+All publications that are based on or utilize the Licensed work shall be cited appropriately using DOI: 10.5281/zenodo.4035154, and include the following notice: LoadPEG.m was created by Dr. Robin Abel and Dr. James Harynuk and used here under license from the University of Alberta; based on the original work available from https://github.com/abelrobin/LoadPEG.
 
 6. DISCLAIMER OF WARRANTIES
 

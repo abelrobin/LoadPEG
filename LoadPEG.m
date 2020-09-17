@@ -1,6 +1,6 @@
 function [pegstruct] = LoadPEG(pegFile, procspec)
 %Please read LICENSE.md before using, and attribute Dr. Robin J. Abel and Dr. James J. Harynuk
-%with appropriate citation using the DOI provided in the LICENSE.md file/GitHub repository.
+%with appropriate citation using DOI: 10.5281/zenodo.4035154
 %
 %Current Version 1.9, 2020-09-17
 %
