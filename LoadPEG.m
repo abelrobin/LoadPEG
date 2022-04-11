@@ -74,7 +74,7 @@ end
 if fid > 2
 	% Read the magic number equivalent to the strings Hs&S for Peg4 or Gs&S for earlier formats
 	magic = fread(fid, 1, '*int');
-	if (magic = =  1395028808 || magic = =  1395028807)
+	if (magic ==  1395028808 || magic ==  1395028807)
 		% Read the section offsets
 		offsets = fread(fid, 6, '*int');
 
@@ -93,7 +93,7 @@ if fid > 2
 		flagData = bin2dec(dec2bin(segmentFlag));
 		for i = 1:(offsets(3)-(offsets(2)+11))
 			% Section starts with the string Version
-			if headerData(i:i+(length(segmentFlag)-1)) = =  flagData
+			if headerData(i:i+(length(segmentFlag)-1)) ==  flagData
 				% Store the offset and stop search
 				currSegmentOffset = offsets(2) + i + length(segmentFlag)-1;
 				break;
@@ -111,7 +111,7 @@ if fid > 2
 		flagData = bin2dec(dec2bin(segmentFlag));
 		for i = 1:(offsets(3)-(offsets(2)+11))
 			% Section starts with the string CRampStepd
-			if headerData(i:i+(length(segmentFlag)-1)) = =  flagData
+			if headerData(i:i+(length(segmentFlag)-1)) ==  flagData
 				% Store the offset and stop search
 				currSegmentOffset = offsets(2) + i + length(segmentFlag)-1;
 				break;
@@ -142,7 +142,7 @@ if fid > 2
 		flagData = bin2dec(dec2bin(segmentFlag));
 		for i = 1:(offsets(3)-(offsets(2)+11))
 			% Section starts with the string CItrSegment
-			if headerData(i:i+(length(segmentFlag)-1)) = =  flagData
+			if headerData(i:i+(length(segmentFlag)-1)) ==  flagData
 				% Store the offset and stop search
 				currSegmentOffset = offsets(2) + i + length(segmentFlag)-1;
 				break;
@@ -160,7 +160,7 @@ if fid > 2
 			fseek(fid, offsets(4) + 8198, 'bof');
 			numScans = double(fread(fid, 1, '*int'));
 
-			if procspec = =  1
+			if procspec ==  1
 				% Read the spectral data as unsigned short
 				fseek(fid, offsets(3) + 4, 'bof');
 
@@ -185,7 +185,7 @@ if fid > 2
 		flagData = bin2dec(dec2bin(segmentFlag));
 		for i = 1:(offsets(3)-(offsets(2)+11))
 			% Section starts with the string CRampStepd
-			if headerData(i:i+(length(segmentFlag)-1)) = =  flagData
+			if headerData(i:i+(length(segmentFlag)-1)) ==  flagData
 				% Store the offset and stop search
 				currSegmentOffset = offsets(2) + i + length(segmentFlag)-1;
 				break;
@@ -198,7 +198,7 @@ if fid > 2
 		flagData = hex2dec(segmentFlag);
 		for i = 1:(offsets(3)-currSegmentOffset)
 			% Section starts with the hex series 0000000001006400 following CRampStepd
-			if headerData(i:i+(length(segmentFlag)-1)) = =  flagData
+			if headerData(i:i+(length(segmentFlag)-1)) ==  flagData
 				% Store the offset and stop search
 				subSegmentOffset = offsets(2) + i + length(segmentFlag)-1;
 				break;
@@ -230,7 +230,7 @@ if fid > 2
 		flagData = bin2dec(dec2bin(segmentFlag));
 		for i = 1:(offsets(3)-(offsets(2)+11))
 			% Section starts with the string CFilamentOffTimesStepd
-			if headerData(i:i+(length(segmentFlag)-1)) = =  flagData
+			if headerData(i:i+(length(segmentFlag)-1)) ==  flagData
 				% Store the offset and stop search
 				currSegmentOffset = offsets(2) + i + length(segmentFlag)-1;
 				break;
@@ -247,14 +247,14 @@ if fid > 2
 		end
 
 		% Correct time vector if acquisition was delayed
-		if firstDelay > 0 && filOff = =  0 %if nextDelay is -1, then this is a simple delay, but if not then there is a table of filament on/off timings
+		if firstDelay > 0 && filOff ==  0 %if nextDelay is -1, then this is a simple delay, but if not then there is a table of filament on/off timings
 			time(:) = time(:)+firstDelay*1000;
 			acqDelay = firstDelay;
 		else
 			acqDelay = 0;
 		end
 
-	elseif magic = =  0
+	elseif magic ==  0
 		errmsg = strcat(pegFile, ' corrupt - header data contains bad values.');
 		error (errmsg)
 	else
@@ -282,7 +282,7 @@ pegstruct.modDur = modDur;
 pegstruct.numScans = numScans;
 pegstruct.time = time;
 pegstruct.time1D = time/1000;
-if procspec = =  1
+if procspec ==  1
 	pegstruct.specdata = specdata;
 	pegstruct.tic = tic;
 	pegstruct.bpc = max(specdata,[],2);
